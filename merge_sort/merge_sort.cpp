@@ -8,7 +8,7 @@ int merge_sort(vector<int>& array, int start, int end);
 
 int main(int argc, char** argv)
 {
-//    /*
+    //  /*
     int array_A[] = { 5, 2, 4, 7, 1, 3, 2, 6 };
     vector<int> array(array_A, array_A+8);
 
@@ -23,7 +23,7 @@ int main(int argc, char** argv)
         cout << array.at(i) << '\t';
     }
     cout << endl;
-//    */
+    //*/
 /*
    int array_B[] = { 2, 4, 5, 7, 1, 2, 4, 6 };
    vector<int> array_merge (array_B, array_B+8);
@@ -57,7 +57,8 @@ void merge(vector<int>& array, int start, int end, int temp)
 
     int i = 0;
     int j = 0;
-    int k;
+    int k = start;
+    /*
     for (k = start; j < temp2 && i < temp1 && k <= end; k++) {
         if (array_L[i] <= array_R[j]) {
             array[k]= array_L[i];
@@ -82,6 +83,34 @@ void merge(vector<int>& array, int start, int end, int temp)
             i++;            
         }
     }
+    */
+
+   
+    while (i < temp1 && j < temp2) {
+        if (array_L[i] <= array_R[j]) {
+            array[k] = array_L[i];
+            i++;
+            k++;
+        }
+        else {
+            array[k] = array_R[j];
+            j++;
+            k++;
+        }
+    }
+
+    while (i < temp1) {
+        array[k] = array_L[i];
+        i++;
+        k++;
+    }
+
+    while (j < temp2) {
+        array[k] = array_R[j];
+        j++;
+        k++;
+    }
+
 }
 
 int merge_sort(vector<int>& array, int start, int end)
